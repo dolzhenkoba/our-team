@@ -1,6 +1,8 @@
 @import (less) "../css/normalize.css";
 @import (less) "../css/layout.css";
-@import "../less/slick.less";
+@import  (less) "../css/font-awesome.min.css";
+
+
 
 @primary-color: #ffcc00;
 
@@ -36,8 +38,7 @@ input[type="submit"]:hover,
 input[type="button"]:hover,
 button:hover,
 .ba-button:hover{
-	background: @primary-color;
-	color: #FFF;
+
 
 }
 
@@ -114,6 +115,10 @@ textarea {
         }
     }
 }
+.ba-slider {
+	position: relative;
+	padding-bottom: 100px;
+}
 
 .ba-slide {
 	padding: 70px 0 10px;
@@ -184,6 +189,7 @@ textarea {
 				color: #fff;
 			}
 	    }
+
     }
     &__wrapper {
     	padding: 76px 24px 60px 0;
@@ -196,13 +202,36 @@ textarea {
     	max-width: 418px;
     	max-height: 418px;
     	margin: 0 auto;
+    	position: relative;
+    	&::before, &::after {
+    		content: "";
+			display: block;
+			position: absolute;
+			background: #FFF;
+    	}
+    	&::before {
+    		width: 105%;
+    		height: 52%;
+    		top: 25%;
+			left: -10px;
+
+    	}
+    	&::after {
+    		width: 52%;
+    		height: 105%;
+    		top: -10px;
+			left: 25%;
+
+    	}
     	img {
     		display: block;
+    		position: relative;
     		border: 1px solid @primary-color;
-
+			z-index: 2;
     	}
     }
 }
+
 @media (max-width: 1020px) {
 	.ba-slide__body {
 		padding: 88px 10px 72px 20px;
@@ -225,6 +254,10 @@ textarea {
 	}
 	.ba-slide__body {
 		padding: 35px 10px 60px 10px;
+	}
+	.ba-slide__body {
+
+		border: none;
 	}
 }
 @media (max-width: 480px) {
@@ -256,7 +289,68 @@ textarea {
 		font-size: 22px;
 	}
 }
+@import "../less/slick.less";
+
+.ba-slider .slick-arrow {
+	position: absolute;
+	width: 14px;
+	height: 23px;
+	border: none;
+	text-indent: -99999px;
+	z-index: 2;
+	outline: none;
+}
+.slick-prev {
+	background:  url(../img/left.png) no-repeat 50%;
+	left: -10px;
+	bottom: 50%;
+}
+.slick-next {
+	background:  url(../img/right.png) no-repeat 50%;
+	right: -10px;
+	bottom: 50%;
+}
+.ba-slider .ba-button--profile:hover {
+	background: @primary-color;
+	color: #FFF;
+}
+.slick-dots {
+	position: absolute;
+	z-index: 2;
+	list-style: none;
+	height: 10px;
+	left: 50%;
+	bottom: 60px;
+	padding: 0;
+	margin: 0;
+	margin-left: -31px;
+	li {
+		display: inline-block;
+
+	}
+
+	button {
+		text-indent: -99999px;
+		border: none;
+	    outline: none;
+	    width: 10px;
+	    height: 10px;
+	    border-radius: 50%;
+	    background: @primary-color;
+	    padding: 0;
+	    margin: 0 5px;
+	    display: block;
 
 
+	}
+	.slick-active {
+		button {
+			background: #FFF;
+			border: 1px solid @primary-color;
+            width: 12px;
+	        height: 12px;
+		}
+	}
+}
 
 
